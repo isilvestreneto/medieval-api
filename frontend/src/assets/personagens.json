@@ -1,0 +1,11 @@
+[
+  {
+    "id": 1,
+    "nome": "Litziel",
+    "classe": "Fada",
+    "vidas": 3,
+    "ataque": 10,
+    "defesa": 20,
+    "arma": "Condão"
+  }
+]

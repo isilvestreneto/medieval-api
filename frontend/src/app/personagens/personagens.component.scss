@@ -1,0 +1,31 @@
+table {
+  width: 100%;
+}
+
+.mat-column-id {
+  width: 32px;
+  border-right: 1px solid black;
+  padding-right: 24px;
+  text-align: center;
+  font-size: 15px;
+}
+
+.mat-column-nome {
+  padding-left: 16px;
+  font-size: 20px;
+}
+.mat-column-classe {
+  font-size: 20px;
+}
+.mat-column-vidas {
+  font-size: 20px;
+}
+.mat-column-ataque {
+  font-size: 20px;
+}
+.mat-column-defesa {
+  font-size: 20px;
+}
+.mat-column-arma {
+  font-size: 20px;
+}
