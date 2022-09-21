@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { ThemePalette } from '@angular/material/core';
+import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
 import { Observable } from 'rxjs';
 import { Personagem } from '../model/personagem';
 import { PersonagensService } from './services/personagens.service';
@@ -8,7 +10,11 @@ import { PersonagensService } from './services/personagens.service';
   templateUrl: './personagens.component.html',
   styleUrls: ['./personagens.component.scss'],
 })
-export class PersonagensComponent implements OnInit {
+export class PersonagensComponent implements AfterViewInit, OnInit {
+  color: ThemePalette = 'accent';
+  mode: ProgressSpinnerMode = 'indeterminate';
+  value = 50;
+
   personagens: Observable<Personagem[]>;
   displayedColumns = [
     'id',
@@ -22,6 +28,9 @@ export class PersonagensComponent implements OnInit {
 
   constructor(private personagensService: PersonagensService) {
     this.personagens = this.personagensService.list();
+  }
+  ngAfterViewInit(): void {
+    throw new Error('Method not implemented.');
   }
 
   ngOnInit(): void {}

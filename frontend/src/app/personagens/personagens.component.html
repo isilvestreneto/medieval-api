@@ -1,5 +1,14 @@
 <mat-card>
-  <mat-toolbar color="accent"><h3>Personagens</h3> </mat-toolbar>
+  <mat-toolbar color="primary"><h3>Personagens</h3> </mat-toolbar>
+
+  <mat-progress-spinner
+    class="example-margin"
+    [color]="color"
+    [mode]="mode"
+    [value]="value"
+  >
+  </mat-progress-spinner>
+
   <table
     mat-table
     [dataSource]="personagens"
