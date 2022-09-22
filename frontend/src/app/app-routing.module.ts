@@ -5,7 +5,7 @@ const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: './personagens/personagens.module.ts',
+    redirectTo: 'personagens',
   },
   {
     path: 'personagens',

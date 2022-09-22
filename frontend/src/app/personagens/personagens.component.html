@@ -1,62 +1,89 @@
 <mat-card>
-  <mat-toolbar color="primary"><h3>Personagens</h3> </mat-toolbar>
+  <mat-toolbar color="accent"><h3>Personagens</h3> </mat-toolbar>
 
-  <mat-progress-spinner
-    class="example-margin"
-    [color]="color"
-    [mode]="mode"
-    [value]="value"
-  >
-  </mat-progress-spinner>
+  <div *ngIf="personagens$ | async as personagens; else loading">
+    <table
+      mat-table
+      [dataSource]="personagens"
+      multiTemplateDataRows
+      class="mat-elevation-z8"
+    >
+      <!-- id Column -->
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef>ID</th>
+        <td mat-cell *matCellDef="let personagem">{{ personagem.id }}</td>
+      </ng-container>
 
-  <table
-    mat-table
-    [dataSource]="personagens"
-    class="mat-elevation-z8 demo-table"
-  >
-    <!-- id Column -->
-    <ng-container matColumnDef="id">
-      <th mat-header-cell *matHeaderCellDef>ID</th>
-      <td mat-cell *matCellDef="let personagem">{{ personagem.id }}</td>
-    </ng-container>
+      <!-- Name Column -->
+      <ng-container matColumnDef="nome">
+        <th mat-header-cell *matHeaderCellDef>Nome</th>
+        <td mat-cell *matCellDef="let personagem">{{ personagem.nome }}</td>
+      </ng-container>
 
-    <!-- Name Column -->
-    <ng-container matColumnDef="nome">
-      <th mat-header-cell *matHeaderCellDef>Nome</th>
-      <td mat-cell *matCellDef="let personagem">{{ personagem.nome }}</td>
-    </ng-container>
+      <!-- Classe Column -->
+      <ng-container matColumnDef="classe">
+        <th mat-header-cell *matHeaderCellDef>Classe</th>
+        <td mat-cell *matCellDef="let personagem">{{ personagem.classe }}</td>
+      </ng-container>
 
-    <!-- Classe Column -->
-    <ng-container matColumnDef="classe">
-      <th mat-header-cell *matHeaderCellDef>Classe</th>
-      <td mat-cell *matCellDef="let personagem">{{ personagem.classe }}</td>
-    </ng-container>
+      <!-- Vidas Column -->
+      <ng-container matColumnDef="vidas">
+        <th mat-header-cell *matHeaderCellDef>Vidas</th>
+        <td mat-cell *matCellDef="let personagem">{{ personagem.vidas }}</td>
+      </ng-container>
 
-    <!-- Vidas Column -->
-    <ng-container matColumnDef="vidas">
-      <th mat-header-cell *matHeaderCellDef>Vidas</th>
-      <td mat-cell *matCellDef="let personagem">{{ personagem.vidas }}</td>
-    </ng-container>
+      <!-- Ataque Column -->
+      <ng-container matColumnDef="ataque">
+        <th mat-header-cell *matHeaderCellDef>Ataque</th>
+        <td mat-cell *matCellDef="let personagem">{{ personagem.ataque }}</td>
+      </ng-container>
 
-    <!-- Ataque Column -->
-    <ng-container matColumnDef="ataque">
-      <th mat-header-cell *matHeaderCellDef>Ataque</th>
-      <td mat-cell *matCellDef="let personagem">{{ personagem.ataque }}</td>
-    </ng-container>
+      <!-- Defesa Column -->
+      <ng-container matColumnDef="defesa">
+        <th mat-header-cell *matHeaderCellDef>Defesa</th>
+        <td mat-cell *matCellDef="let personagem">{{ personagem.defesa }}</td>
+      </ng-container>
 
-    <!-- Defesa Column -->
-    <ng-container matColumnDef="defesa">
-      <th mat-header-cell *matHeaderCellDef>Defesa</th>
-      <td mat-cell *matCellDef="let personagem">{{ personagem.defesa }}</td>
-    </ng-container>
+      <!-- Arma Column -->
+      <ng-container matColumnDef="arma">
+        <th mat-header-cell *matHeaderCellDef>Arma</th>
+        <td mat-cell *matCellDef="let personagem">{{ personagem.arma }}</td>
+      </ng-container>
 
-    <!-- Arma Column -->
-    <ng-container matColumnDef="arma">
-      <th mat-header-cell *matHeaderCellDef>Arma</th>
-      <td mat-cell *matCellDef="let personagem">{{ personagem.arma }}</td>
-    </ng-container>
+      <ng-container matColumnDef="expand">
+        <th mat-header-cell *matHeaderCellDef aria-label="row actions">
+          &nbsp;
+        </th>
+        <td mat-cell *matCellDef="let personagem">
+          <button
+            mat-icon-button
+            aria-label="expand row"
+            (click)="
+              personagens$ = personagens$ === personagem ? null : personagem;
+              $event.stopPropagation()
+            "
+          >
+            <mat-icon *ngIf="personagens$ !== personagem"
+              >keyboard_arrow_down</mat-icon
+            >
+            <mat-icon *ngIf="personagens$ === personagem"
+              >keyboard_arrow_up</mat-icon
+            >
+          </button>
+        </td>
+      </ng-container>
 
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-  </table>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </div>
+  <ng-template #loading>
+    <mat-progress-spinner
+      class="example-margin"
+      [color]="color"
+      [mode]="mode"
+      [value]="value"
+    >
+    </mat-progress-spinner>
+  </ng-template>
 </mat-card>

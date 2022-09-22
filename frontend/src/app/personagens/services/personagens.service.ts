@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { tap } from 'rxjs';
+import { delay, first, tap } from 'rxjs';
 
 import { Personagem } from 'src/app/model/personagem';
 
@@ -13,8 +13,10 @@ export class PersonagensService {
   constructor(private httpClient: HttpClient) {}
 
   list() {
-    return this.httpClient
-      .get<Personagem[]>(this.API)
-      .pipe(tap((personagens) => console.log(personagens)));
+    return this.httpClient.get<Personagem[]>(this.API).pipe(
+      first(),
+      delay(500),
+      tap((personagens) => console.log(personagens))
+    );
   }
 }
