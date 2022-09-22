@@ -52,7 +52,7 @@ export class PersonagensComponent implements AfterViewInit, OnInit {
   ) {
     this.personagens$ = this.personagensService.list().pipe(
       catchError((error) => {
-        this.onError('Erro ao carregar cursos.');
+        this.onError('Erro ao carregar personagens.');
         return of([]);
       })
     );

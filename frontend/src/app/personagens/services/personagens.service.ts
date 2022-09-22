@@ -8,7 +8,7 @@ import { Personagem } from 'src/app/model/personagem';
   providedIn: 'root',
 })
 export class PersonagensService {
-  private readonly API = '/assets/personagens.json';
+  private readonly API = '/api/personagens';
 
   constructor(private httpClient: HttpClient) {}
 
