@@ -4,8 +4,44 @@
     "nome": "Litziel",
     "classe": "Fada",
     "vidas": 3,
-    "ataque": 10,
-    "defesa": 20,
+    "ataque": 20,
+    "defesa": 30,
+    "arma": "Condão"
+  },
+  {
+    "id": 2,
+    "nome": "Ogledino",
+    "classe": "Genio",
+    "vidas": 10,
+    "ataque": 100,
+    "defesa": 90,
+    "arma": "Lâmpada"
+  },
+  {
+    "id": 3,
+    "nome": "Syrax",
+    "classe": "Dragao",
+    "vidas": 10,
+    "ataque": 500,
+    "defesa": 350,
+    "arma": "-"
+  },
+  {
+    "id": 4,
+    "nome": "Camena",
+    "classe": "Sereia",
+    "vidas": 5,
+    "ataque": 80,
+    "defesa": 50,
+    "arma": "Tridente"
+  },
+  {
+    "id": 5,
+    "nome": "Kael",
+    "classe": "Guerreiro",
+    "vidas": 5,
+    "ataque": 150,
+    "defesa": 80,
     "arma": "Condão"
   }
 ]

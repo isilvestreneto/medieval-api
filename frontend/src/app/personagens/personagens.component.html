@@ -30,14 +30,17 @@
             aria-label="Categoria da classe"
             src="./assets/svg/{{ personagem.classe | classe }}.svg"
           />
-        
         </td>
       </ng-container>
 
       <!-- Vidas Column -->
       <ng-container matColumnDef="vidas">
         <th mat-header-cell *matHeaderCellDef>Vidas</th>
-        <td mat-cell *matCellDef="let personagem">{{ personagem.vidas }}</td>
+        <td mat-cell *matCellDef="let personagem">
+          <mat-icon color="accent" aria-hidden="false" aria-label="Example home icon">{{
+            personagem.vidas | vidas
+          }}</mat-icon>
+        </td>
       </ng-container>
 
       <!-- Ataque Column -->
