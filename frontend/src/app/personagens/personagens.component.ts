@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { ThemePalette } from '@angular/material/core';
 import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
-import { Observable } from 'rxjs';
+import { catchError, Observable, of } from 'rxjs';
 import { Personagem } from '../model/personagem';
 import { PersonagensService } from './services/personagens.service';
 import {
@@ -11,6 +11,8 @@ import {
   transition,
   trigger,
 } from '@angular/animations';
+import { MatDialog } from '@angular/material/dialog';
+import { ErrorDialogComponent } from '../shared/components/error-dialog/error-dialog.component';
 
 @Component({
   selector: 'app-personagens',
@@ -32,10 +34,7 @@ export class PersonagensComponent implements AfterViewInit, OnInit {
   mode: ProgressSpinnerMode = 'indeterminate';
   value = 50;
 
-
-
   personagens$: Observable<Personagem[]>;
-
 
   displayedColumns = [
     'id',
@@ -47,9 +46,24 @@ export class PersonagensComponent implements AfterViewInit, OnInit {
     'arma',
   ];
 
-  constructor(private personagensService: PersonagensService) {
-    this.personagens$ = this.personagensService.list();
+  constructor(
+    private personagensService: PersonagensService,
+    public dialog: MatDialog
+  ) {
+    this.personagens$ = this.personagensService.list().pipe(
+      catchError((error) => {
+        this.onError('Erro ao carregar cursos.');
+        return of([]);
+      })
+    );
   }
+
+  onError(errorMsg: string) {
+    this.dialog.open(ErrorDialogComponent, {
+      data: errorMsg,
+    });
+  }
+
   ngAfterViewInit(): void {
     throw new Error('Method not implemented.');
   }
