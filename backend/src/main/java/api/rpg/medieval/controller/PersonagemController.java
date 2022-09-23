@@ -1,4 +1,4 @@
-package api.rpg.medieval.controller.personagem;
+package api.rpg.medieval.controller;
 
 import java.util.List;
 import java.util.Optional;
@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import api.rpg.medieval.model.personagem.Personagem;
+import api.rpg.medieval.model.Personagem;
 import api.rpg.medieval.repository.PersonagemRepository;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

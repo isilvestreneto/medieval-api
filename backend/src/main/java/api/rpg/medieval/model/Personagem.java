@@ -1,4 +1,4 @@
-package api.rpg.medieval.model.personagem;
+package api.rpg.medieval.model;
 
 import java.io.Serializable;
 

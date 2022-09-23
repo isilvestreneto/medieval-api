@@ -8,7 +8,9 @@ import { Personagem } from 'src/app/model/personagem';
   providedIn: 'root',
 })
 export class PersonagensService {
-  private readonly API = '/api/personagens';
+  // private readonly API = '/api/personagens';
+
+  private readonly API = '../../../assets/personagens.json'; // MOCK
 
   constructor(private httpClient: HttpClient) {}
 
